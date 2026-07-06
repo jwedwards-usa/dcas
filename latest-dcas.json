@@ -92,9 +92,9 @@
     },
     "SOLUSD": {
       "asset_symbol": "SOLUSD",
-      "captured_at_utc": "2026-07-03T22:42:27Z",
-      "deltaVs1": -2.16,
-      "updated_at_utc": "2026-07-06T04:38:29Z"
+      "captured_at_utc": "2026-07-06T11:42:31Z",
+      "deltaVs1": -2.2,
+      "updated_at_utc": "2026-07-06T11:42:31Z"
     },
     "TSLA": {
       "asset_symbol": "TSLA",
@@ -115,5 +115,5 @@
       "updated_at_utc": "2026-07-06T11:41:44Z"
     }
   },
-  "last_run_time_utc": "2026-07-06T11:42:19Z"
+  "last_run_time_utc": "2026-07-06T11:42:31Z"
 }
