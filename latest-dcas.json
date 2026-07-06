@@ -68,9 +68,9 @@
     },
     "NVDA": {
       "asset_symbol": "NVDA",
-      "captured_at_utc": "2026-07-03T22:41:29Z",
+      "captured_at_utc": "2026-07-06T11:41:32Z",
       "deltaVs1": -1.0952,
-      "updated_at_utc": "2026-07-06T04:38:29Z"
+      "updated_at_utc": "2026-07-06T11:41:32Z"
     },
     "OIL": {
       "asset_symbol": "OIL",
@@ -109,5 +109,5 @@
       "updated_at_utc": "2026-07-06T04:38:29Z"
     }
   },
-  "last_run_time_utc": "2026-07-06T11:41:19Z"
+  "last_run_time_utc": "2026-07-06T11:41:32Z"
 }
