@@ -38,9 +38,9 @@
     },
     "ECHO": {
       "asset_symbol": "ECHO",
-      "captured_at_utc": "2026-07-03T22:42:16Z",
+      "captured_at_utc": "2026-07-06T11:42:19Z",
       "deltaVs1": -0.0317,
-      "updated_at_utc": "2026-07-06T04:38:29Z"
+      "updated_at_utc": "2026-07-06T11:42:19Z"
     },
     "GOOG": {
       "asset_symbol": "GOOG",
@@ -115,5 +115,5 @@
       "updated_at_utc": "2026-07-06T11:41:44Z"
     }
   },
-  "last_run_time_utc": "2026-07-06T11:42:07Z"
+  "last_run_time_utc": "2026-07-06T11:42:19Z"
 }
