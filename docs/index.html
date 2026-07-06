@@ -34,7 +34,7 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-size: clamp(1.65rem, 4vw, 2.2rem);
       line-height: 1.1;
     }
 
@@ -248,6 +248,7 @@
         const options = readOptions();
         const rows = readRows(data);
         const result = allocate(rows, options);
+        const generated = generatedInfo(data, rows);
 
         els.budgetOut.textContent = money(options.budget);
         els.allocatedOut.textContent = money(result.allocated);
@@ -256,7 +257,7 @@
         els.rows.innerHTML = result.kept.length ? result.kept.map(rowHtml).join("") : empty("No assets met the allocation rules.");
 
         const excluded = options.excludes.size ? ` Excluded: ${[...options.excludes].join(", ")}.` : "";
-        setStatus(`Showing ${result.kept.length} morning trade candidates from ${rows.length} valid asset rows.${excluded}`);
+        setStatus(`Showing ${result.kept.length} ${generated.session} trade candidates for ${generated.date} from ${rows.length} valid asset rows.${excluded}`);
       } catch (error) {
         reset();
         setStatus(`Error: ${error.message}`, true);
@@ -295,7 +296,13 @@
       const delta = Number(pick(row, ["deltaVs1", "delta_vs_1", "delta", "vs", "value"]));
       if (!asset || !Number.isFinite(delta)) return null;
 
-      return { asset: String(asset).trim().toUpperCase(), delta, score: Math.abs(delta) };
+      return {
+        asset: String(asset).trim().toUpperCase(),
+        delta,
+        score: Math.abs(delta),
+        updatedAt: pick(row, ["updated_at_utc", "updatedAt", "updated_at"]),
+        capturedAt: pick(row, ["captured_at_utc", "capturedAt", "captured_at"])
+      };
     }
 
     function pick(row, names) {
@@ -343,6 +350,26 @@
 
       kept.sort((a, b) => b.finalAllocation - a.finalAllocation || a.asset.localeCompare(b.asset));
       return { kept, dropped, overflow, allocated: sum(kept, "finalAllocation") };
+    }
+
+    function generatedInfo(data, rows) {
+      const timestamp = data.last_run_time_utc || newestTimestamp(rows);
+      const date = timestamp ? new Date(timestamp) : null;
+      if (!date || Number.isNaN(date.getTime())) return { session: "daily", date: "unknown date" };
+
+      return {
+        session: date.getHours() < 12 ? "morning" : "evening",
+        date: date.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })
+      };
+    }
+
+    function newestTimestamp(rows) {
+      const timestamps = rows
+        .map((row) => row.updatedAt || row.capturedAt)
+        .map((value) => value && new Date(value))
+        .filter((date) => date && !Number.isNaN(date.getTime()))
+        .sort((a, b) => b - a);
+      return timestamps[0] && timestamps[0].toISOString();
     }
 
     function rowHtml(row) {
