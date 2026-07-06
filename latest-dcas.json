@@ -14,9 +14,9 @@
     },
     "ASML": {
       "asset_symbol": "ASML",
-      "captured_at_utc": "2026-07-03T22:39:50Z",
+      "captured_at_utc": "2026-07-06T11:39:52Z",
       "deltaVs1": -0.1523,
-      "updated_at_utc": "2026-07-06T04:38:29Z"
+      "updated_at_utc": "2026-07-06T11:39:52Z"
     },
     "ASTS": {
       "asset_symbol": "ASTS",
@@ -109,5 +109,5 @@
       "updated_at_utc": "2026-07-06T04:38:29Z"
     }
   },
-  "last_run_time_utc": "2026-07-06T11:39:29Z"
+  "last_run_time_utc": "2026-07-06T11:39:52Z"
 }
