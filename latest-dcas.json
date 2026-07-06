@@ -80,9 +80,9 @@
     },
     "PLTR": {
       "asset_symbol": "PLTR",
-      "captured_at_utc": "2026-07-03T22:41:52Z",
+      "captured_at_utc": "2026-07-06T11:41:56Z",
       "deltaVs1": -0.9268,
-      "updated_at_utc": "2026-07-06T04:38:29Z"
+      "updated_at_utc": "2026-07-06T11:41:56Z"
     },
     "QQQ": {
       "asset_symbol": "QQQ",
@@ -115,5 +115,5 @@
       "updated_at_utc": "2026-07-06T11:41:44Z"
     }
   },
-  "last_run_time_utc": "2026-07-06T11:41:44Z"
+  "last_run_time_utc": "2026-07-06T11:41:56Z"
 }
