@@ -2,9 +2,9 @@
   "assets": {
     "AMD": {
       "asset_symbol": "AMD",
-      "captured_at_utc": "2026-07-03T22:39:13Z",
+      "captured_at_utc": "2026-07-06T11:39:16Z",
       "deltaVs1": 0.19,
-      "updated_at_utc": "2026-07-06T04:38:29Z"
+      "updated_at_utc": "2026-07-06T11:39:16Z"
     },
     "AMZN": {
       "asset_symbol": "AMZN",
@@ -109,5 +109,5 @@
       "updated_at_utc": "2026-07-06T04:38:29Z"
     }
   },
-  "last_run_time_utc": "2026-07-06T04:38:29Z"
+  "last_run_time_utc": "2026-07-06T11:39:16Z"
 }
