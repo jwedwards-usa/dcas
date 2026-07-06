@@ -38,8 +38,6 @@
       line-height: 1.1;
     }
 
-    p { color: var(--muted); }
-
     .card {
       margin-top: 20px;
       padding: 18px;
@@ -53,6 +51,7 @@
       grid-template-columns: repeat(4, minmax(130px, 1fr)) auto;
       gap: 12px;
       align-items: end;
+      margin-top: 16px;
     }
 
     label {
@@ -87,6 +86,7 @@
     .status {
       min-height: 24px;
       margin: 14px 0;
+      color: var(--muted);
     }
 
     .error {
@@ -98,7 +98,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
-      margin-bottom: 14px;
+      margin: 14px 0;
     }
 
     .metric {
@@ -171,26 +171,10 @@
 </head>
 <body>
   <main>
-    <h1>Daily DCA Allocations</h1>
-    <p>Allocates the daily budget by absolute delta strength from latest-dcas.json.</p>
+    <h1>Top 5 Daily DCA Allocations</h1>
 
     <section class="card" aria-label="DCA allocation calculator">
-      <form id="controls">
-        <label>Daily budget <input id="budget" type="number" min="0" step="0.01" value="100"></label>
-        <label>Min allocation <input id="minimum" type="number" min="0" step="0.01" value="5"></label>
-        <label>Round-up tolerance <input id="tolerance" type="number" min="0" step="0.01" value="0.50"></label>
-        <label>Excludes <input id="excludes" type="text" value="OIL, PLTR" spellcheck="false"></label>
-        <button type="submit">Refresh / Recalculate</button>
-      </form>
-
       <p id="status" class="status">Loading latest-dcas.json...</p>
-
-      <div class="summary" aria-label="Allocation summary">
-        <div class="metric"><span>Budget</span><strong id="budgetOut">$0.00</strong></div>
-        <div class="metric"><span>Allocated</span><strong id="allocatedOut">$0.00</strong></div>
-        <div class="metric"><span>Kept</span><strong id="keptOut">0</strong></div>
-        <div class="metric"><span>Dropped</span><strong id="droppedOut">0</strong></div>
-      </div>
 
       <div class="table-wrap">
         <table>
@@ -207,6 +191,21 @@
           <tbody id="rows"><tr><td class="empty" colspan="6">No allocations loaded yet.</td></tr></tbody>
         </table>
       </div>
+
+      <div class="summary" aria-label="Allocation summary">
+        <div class="metric"><span>Budget</span><strong id="budgetOut">$0.00</strong></div>
+        <div class="metric"><span>Allocated</span><strong id="allocatedOut">$0.00</strong></div>
+        <div class="metric"><span>Kept</span><strong id="keptOut">0</strong></div>
+        <div class="metric"><span>Dropped</span><strong id="droppedOut">0</strong></div>
+      </div>
+
+      <form id="controls">
+        <label>Daily budget <input id="budget" type="number" min="0" step="0.01" value="100"></label>
+        <label>Min allocation <input id="minimum" type="number" min="0" step="0.01" value="5"></label>
+        <label>Round-up tolerance <input id="tolerance" type="number" min="0" step="0.01" value="0.50"></label>
+        <label>Excludes <input id="excludes" type="text" value="OIL, PLTR" spellcheck="false"></label>
+        <button type="submit">Refresh / Recalculate</button>
+      </form>
     </section>
   </main>
 
@@ -253,11 +252,11 @@
         els.budgetOut.textContent = money(options.budget);
         els.allocatedOut.textContent = money(result.allocated);
         els.keptOut.textContent = String(result.kept.length);
-        els.droppedOut.textContent = String(result.dropped.length);
+        els.droppedOut.textContent = String(result.dropped.length + result.overflow.length);
         els.rows.innerHTML = result.kept.length ? result.kept.map(rowHtml).join("") : empty("No assets met the allocation rules.");
 
         const excluded = options.excludes.size ? ` Excluded: ${[...options.excludes].join(", ")}.` : "";
-        setStatus(`Loaded ${rows.length} valid asset rows. Showing ${result.kept.length} allocations.${excluded}`);
+        setStatus(`Showing ${result.kept.length} morning trade candidates from ${rows.length} valid asset rows.${excluded}`);
       } catch (error) {
         reset();
         setStatus(`Error: ${error.message}`, true);
@@ -307,9 +306,13 @@
     }
 
     function allocate(rows, options) {
-      const candidates = rows.filter((row) => row.score > 0 && !options.excludes.has(row.asset));
-      const scoreTotal = sum(candidates, "score");
-      const all = candidates.map((row) => ({
+      const candidates = rows
+        .filter((row) => row.score > 0 && !options.excludes.has(row.asset))
+        .sort((a, b) => b.score - a.score || a.asset.localeCompare(b.asset));
+      const top = candidates.slice(0, 5);
+      const overflow = candidates.slice(5);
+      const scoreTotal = sum(top, "score");
+      const all = top.map((row) => ({
         ...row,
         rawAllocation: scoreTotal ? options.budget * row.score / scoreTotal : 0,
         finalAllocation: 0,
@@ -339,7 +342,7 @@
       }
 
       kept.sort((a, b) => b.finalAllocation - a.finalAllocation || a.asset.localeCompare(b.asset));
-      return { kept, dropped, allocated: sum(kept, "finalAllocation") };
+      return { kept, dropped, overflow, allocated: sum(kept, "finalAllocation") };
     }
 
     function rowHtml(row) {
