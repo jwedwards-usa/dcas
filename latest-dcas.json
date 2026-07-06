@@ -62,9 +62,9 @@
     },
     "MU": {
       "asset_symbol": "MU",
-      "captured_at_utc": "2026-07-03T22:41:16Z",
+      "captured_at_utc": "2026-07-06T11:41:19Z",
       "deltaVs1": -0.6435,
-      "updated_at_utc": "2026-07-06T04:38:29Z"
+      "updated_at_utc": "2026-07-06T11:41:19Z"
     },
     "NVDA": {
       "asset_symbol": "NVDA",
@@ -109,5 +109,5 @@
       "updated_at_utc": "2026-07-06T04:38:29Z"
     }
   },
-  "last_run_time_utc": "2026-07-06T11:41:07Z"
+  "last_run_time_utc": "2026-07-06T11:41:19Z"
 }
