@@ -32,9 +32,9 @@
     },
     "BTCUSD": {
       "asset_symbol": "BTCUSD",
-      "captured_at_utc": "2026-07-03T22:40:26Z",
-      "deltaVs1": -2.82,
-      "updated_at_utc": "2026-07-06T04:38:29Z"
+      "captured_at_utc": "2026-07-06T11:40:30Z",
+      "deltaVs1": -2.81,
+      "updated_at_utc": "2026-07-06T11:40:30Z"
     },
     "ECHO": {
       "asset_symbol": "ECHO",
@@ -109,5 +109,5 @@
       "updated_at_utc": "2026-07-06T04:38:29Z"
     }
   },
-  "last_run_time_utc": "2026-07-06T11:40:18Z"
+  "last_run_time_utc": "2026-07-06T11:40:30Z"
 }
