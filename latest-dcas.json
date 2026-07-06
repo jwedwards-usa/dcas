@@ -4,110 +4,110 @@
       "asset_symbol": "AMD",
       "captured_at_utc": "2026-07-03T22:39:13Z",
       "deltaVs1": 0.19,
-      "updated_at_utc": "2026-07-06T03:05:02Z"
+      "updated_at_utc": "2026-07-06T04:38:29Z"
     },
     "AMZN": {
       "asset_symbol": "AMZN",
       "captured_at_utc": "2026-07-03T22:39:26Z",
       "deltaVs1": -0.5282,
-      "updated_at_utc": "2026-07-06T03:05:02Z"
+      "updated_at_utc": "2026-07-06T04:38:29Z"
     },
     "ASML": {
       "asset_symbol": "ASML",
       "captured_at_utc": "2026-07-03T22:39:50Z",
       "deltaVs1": -0.1523,
-      "updated_at_utc": "2026-07-06T03:05:02Z"
+      "updated_at_utc": "2026-07-06T04:38:29Z"
     },
     "ASTS": {
       "asset_symbol": "ASTS",
       "captured_at_utc": "2026-07-03T22:40:02Z",
       "deltaVs1": -0.4347,
-      "updated_at_utc": "2026-07-06T03:05:02Z"
+      "updated_at_utc": "2026-07-06T04:38:29Z"
     },
     "AVGO": {
       "asset_symbol": "AVGO",
       "captured_at_utc": "2026-07-03T22:40:15Z",
       "deltaVs1": -2.57,
-      "updated_at_utc": "2026-07-06T03:05:02Z"
+      "updated_at_utc": "2026-07-06T04:38:29Z"
     },
     "BTCUSD": {
       "asset_symbol": "BTCUSD",
       "captured_at_utc": "2026-07-03T22:40:26Z",
       "deltaVs1": -2.82,
-      "updated_at_utc": "2026-07-06T03:05:02Z"
+      "updated_at_utc": "2026-07-06T04:38:29Z"
     },
     "ECHO": {
       "asset_symbol": "ECHO",
       "captured_at_utc": "2026-07-03T22:42:16Z",
       "deltaVs1": -0.0317,
-      "updated_at_utc": "2026-07-06T03:05:02Z"
+      "updated_at_utc": "2026-07-06T04:38:29Z"
     },
     "GOOG": {
       "asset_symbol": "GOOG",
       "captured_at_utc": "2026-07-03T22:40:39Z",
       "deltaVs1": -0.7182,
-      "updated_at_utc": "2026-07-06T03:05:02Z"
+      "updated_at_utc": "2026-07-06T04:38:29Z"
     },
     "MRVL": {
       "asset_symbol": "MRVL",
       "captured_at_utc": "2026-07-03T22:40:51Z",
       "deltaVs1": -0.2896,
-      "updated_at_utc": "2026-07-06T03:05:02Z"
+      "updated_at_utc": "2026-07-06T04:38:29Z"
     },
     "MSTR": {
       "asset_symbol": "MSTR",
       "captured_at_utc": "2026-07-03T22:41:03Z",
       "deltaVs1": -2.04,
-      "updated_at_utc": "2026-07-06T03:05:02Z"
+      "updated_at_utc": "2026-07-06T04:38:29Z"
     },
     "MU": {
       "asset_symbol": "MU",
       "captured_at_utc": "2026-07-03T22:41:16Z",
       "deltaVs1": -0.6435,
-      "updated_at_utc": "2026-07-06T03:05:02Z"
+      "updated_at_utc": "2026-07-06T04:38:29Z"
     },
     "NVDA": {
       "asset_symbol": "NVDA",
       "captured_at_utc": "2026-07-03T22:41:29Z",
       "deltaVs1": -1.0952,
-      "updated_at_utc": "2026-07-06T03:05:02Z"
+      "updated_at_utc": "2026-07-06T04:38:29Z"
     },
     "OIL": {
       "asset_symbol": "OIL",
       "captured_at_utc": "2026-07-03T22:41:40Z",
       "deltaVs1": -1.57,
-      "updated_at_utc": "2026-07-06T03:05:02Z"
+      "updated_at_utc": "2026-07-06T04:38:29Z"
     },
     "PLTR": {
       "asset_symbol": "PLTR",
       "captured_at_utc": "2026-07-03T22:41:52Z",
       "deltaVs1": -0.9268,
-      "updated_at_utc": "2026-07-06T03:05:02Z"
+      "updated_at_utc": "2026-07-06T04:38:29Z"
     },
     "QQQ": {
       "asset_symbol": "QQQ",
       "captured_at_utc": "2026-07-03T22:42:03Z",
       "deltaVs1": -0.547,
-      "updated_at_utc": "2026-07-06T03:05:02Z"
+      "updated_at_utc": "2026-07-06T04:38:29Z"
     },
     "SOLUSD": {
       "asset_symbol": "SOLUSD",
       "captured_at_utc": "2026-07-03T22:42:27Z",
       "deltaVs1": -2.16,
-      "updated_at_utc": "2026-07-06T03:05:02Z"
+      "updated_at_utc": "2026-07-06T04:38:29Z"
     },
     "TSLA": {
       "asset_symbol": "TSLA",
       "captured_at_utc": "2026-07-03T22:42:39Z",
       "deltaVs1": 0.01,
-      "updated_at_utc": "2026-07-06T03:05:02Z"
+      "updated_at_utc": "2026-07-06T04:38:29Z"
     },
     "TSM": {
       "asset_symbol": "TSM",
       "captured_at_utc": "2026-07-03T22:42:52Z",
       "deltaVs1": -0.4011,
-      "updated_at_utc": "2026-07-06T03:05:02Z"
+      "updated_at_utc": "2026-07-06T04:38:29Z"
     }
   },
-  "last_run_time_utc": "2026-07-06T03:05:02Z"
+  "last_run_time_utc": "2026-07-06T04:38:29Z"
 }
