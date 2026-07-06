@@ -8,9 +8,9 @@
     },
     "AMZN": {
       "asset_symbol": "AMZN",
-      "captured_at_utc": "2026-07-03T22:39:26Z",
+      "captured_at_utc": "2026-07-06T11:39:29Z",
       "deltaVs1": -0.5282,
-      "updated_at_utc": "2026-07-06T04:38:29Z"
+      "updated_at_utc": "2026-07-06T11:39:29Z"
     },
     "ASML": {
       "asset_symbol": "ASML",
@@ -109,5 +109,5 @@
       "updated_at_utc": "2026-07-06T04:38:29Z"
     }
   },
-  "last_run_time_utc": "2026-07-06T11:39:16Z"
+  "last_run_time_utc": "2026-07-06T11:39:29Z"
 }
