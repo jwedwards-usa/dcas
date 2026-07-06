@@ -56,9 +56,9 @@
     },
     "MSTR": {
       "asset_symbol": "MSTR",
-      "captured_at_utc": "2026-07-03T22:41:03Z",
+      "captured_at_utc": "2026-07-06T11:41:07Z",
       "deltaVs1": -2.04,
-      "updated_at_utc": "2026-07-06T04:38:29Z"
+      "updated_at_utc": "2026-07-06T11:41:07Z"
     },
     "MU": {
       "asset_symbol": "MU",
@@ -109,5 +109,5 @@
       "updated_at_utc": "2026-07-06T04:38:29Z"
     }
   },
-  "last_run_time_utc": "2026-07-06T11:40:55Z"
+  "last_run_time_utc": "2026-07-06T11:41:07Z"
 }
