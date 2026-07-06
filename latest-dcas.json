@@ -50,9 +50,9 @@
     },
     "MRVL": {
       "asset_symbol": "MRVL",
-      "captured_at_utc": "2026-07-03T22:40:51Z",
+      "captured_at_utc": "2026-07-06T11:40:55Z",
       "deltaVs1": -0.2896,
-      "updated_at_utc": "2026-07-06T04:38:29Z"
+      "updated_at_utc": "2026-07-06T11:40:55Z"
     },
     "MSTR": {
       "asset_symbol": "MSTR",
@@ -109,5 +109,5 @@
       "updated_at_utc": "2026-07-06T04:38:29Z"
     }
   },
-  "last_run_time_utc": "2026-07-06T11:40:42Z"
+  "last_run_time_utc": "2026-07-06T11:40:55Z"
 }
