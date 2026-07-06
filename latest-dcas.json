@@ -104,9 +104,9 @@
     },
     "TSM": {
       "asset_symbol": "TSM",
-      "captured_at_utc": "2026-07-03T22:42:52Z",
+      "captured_at_utc": "2026-07-06T11:42:56Z",
       "deltaVs1": -0.4011,
-      "updated_at_utc": "2026-07-06T04:38:29Z"
+      "updated_at_utc": "2026-07-06T11:42:56Z"
     },
     "USOIL": {
       "asset_symbol": "USOIL",
@@ -115,5 +115,5 @@
       "updated_at_utc": "2026-07-06T11:41:44Z"
     }
   },
-  "last_run_time_utc": "2026-07-06T11:42:43Z"
+  "last_run_time_utc": "2026-07-06T11:42:56Z"
 }
