@@ -2,75 +2,75 @@
   "assets": {
     "AMD": {
       "asset_symbol": "AMD",
-      "captured_at_utc": "2026-07-06T22:39:22Z",
+      "captured_at_utc": "2026-07-07T11:39:20Z",
       "deltaVs1": 0.53,
-      "updated_at_utc": "2026-07-06T22:39:22Z"
+      "updated_at_utc": "2026-07-07T11:39:21Z"
     },
     "AMZN": {
       "asset_symbol": "AMZN",
-      "captured_at_utc": "2026-07-06T22:39:35Z",
+      "captured_at_utc": "2026-07-07T11:39:33Z",
       "deltaVs1": -0.4949,
-      "updated_at_utc": "2026-07-06T22:39:35Z"
+      "updated_at_utc": "2026-07-07T11:39:33Z"
     },
     "ASML": {
       "asset_symbol": "ASML",
-      "captured_at_utc": "2026-07-06T22:40:00Z",
+      "captured_at_utc": "2026-07-07T11:39:58Z",
       "deltaVs1": 0.05,
-      "updated_at_utc": "2026-07-06T22:40:00Z"
+      "updated_at_utc": "2026-07-07T11:39:58Z"
     },
     "ASTS": {
       "asset_symbol": "ASTS",
-      "captured_at_utc": "2026-07-06T22:40:12Z",
+      "captured_at_utc": "2026-07-07T11:40:10Z",
       "deltaVs1": -0.5592,
-      "updated_at_utc": "2026-07-06T22:40:12Z"
+      "updated_at_utc": "2026-07-07T11:40:10Z"
     },
     "AVGO": {
       "asset_symbol": "AVGO",
-      "captured_at_utc": "2026-07-06T22:40:25Z",
+      "captured_at_utc": "2026-07-07T11:40:22Z",
       "deltaVs1": -2.26,
-      "updated_at_utc": "2026-07-06T22:40:25Z"
+      "updated_at_utc": "2026-07-07T11:40:22Z"
     },
     "BTCUSD": {
       "asset_symbol": "BTCUSD",
-      "captured_at_utc": "2026-07-06T22:40:36Z",
-      "deltaVs1": -2.75,
-      "updated_at_utc": "2026-07-06T22:40:36Z"
+      "captured_at_utc": "2026-07-07T11:40:34Z",
+      "deltaVs1": -2.8,
+      "updated_at_utc": "2026-07-07T11:40:34Z"
     },
     "ECHO": {
       "asset_symbol": "ECHO",
-      "captured_at_utc": "2026-07-06T22:42:27Z",
+      "captured_at_utc": "2026-07-07T11:42:25Z",
       "deltaVs1": -0.1325,
-      "updated_at_utc": "2026-07-06T22:42:27Z"
+      "updated_at_utc": "2026-07-07T11:42:25Z"
     },
     "GOOG": {
       "asset_symbol": "GOOG",
-      "captured_at_utc": "2026-07-06T22:40:49Z",
+      "captured_at_utc": "2026-07-07T11:40:46Z",
       "deltaVs1": -0.5332,
-      "updated_at_utc": "2026-07-06T22:40:49Z"
+      "updated_at_utc": "2026-07-07T11:40:47Z"
     },
     "MRVL": {
       "asset_symbol": "MRVL",
-      "captured_at_utc": "2026-07-06T22:41:02Z",
+      "captured_at_utc": "2026-07-07T11:40:59Z",
       "deltaVs1": -0.2131,
-      "updated_at_utc": "2026-07-06T22:41:02Z"
+      "updated_at_utc": "2026-07-07T11:40:59Z"
     },
     "MSTR": {
       "asset_symbol": "MSTR",
-      "captured_at_utc": "2026-07-06T22:41:14Z",
+      "captured_at_utc": "2026-07-07T11:41:11Z",
       "deltaVs1": -2.05,
-      "updated_at_utc": "2026-07-06T22:41:14Z"
+      "updated_at_utc": "2026-07-07T11:41:12Z"
     },
     "MU": {
       "asset_symbol": "MU",
-      "captured_at_utc": "2026-07-06T22:41:27Z",
+      "captured_at_utc": "2026-07-07T11:41:24Z",
       "deltaVs1": -0.5961,
-      "updated_at_utc": "2026-07-06T22:41:27Z"
+      "updated_at_utc": "2026-07-07T11:41:24Z"
     },
     "NVDA": {
       "asset_symbol": "NVDA",
-      "captured_at_utc": "2026-07-06T22:41:39Z",
+      "captured_at_utc": "2026-07-07T11:41:37Z",
       "deltaVs1": -1.0799,
-      "updated_at_utc": "2026-07-06T22:41:40Z"
+      "updated_at_utc": "2026-07-07T11:41:37Z"
     },
     "OIL": {
       "asset_symbol": "OIL",
@@ -80,40 +80,40 @@
     },
     "PLTR": {
       "asset_symbol": "PLTR",
-      "captured_at_utc": "2026-07-06T22:42:03Z",
+      "captured_at_utc": "2026-07-07T11:42:01Z",
       "deltaVs1": -0.872,
-      "updated_at_utc": "2026-07-06T22:42:03Z"
+      "updated_at_utc": "2026-07-07T11:42:01Z"
     },
     "QQQ": {
       "asset_symbol": "QQQ",
-      "captured_at_utc": "2026-07-06T22:42:15Z",
+      "captured_at_utc": "2026-07-07T11:42:12Z",
       "deltaVs1": -0.4157,
-      "updated_at_utc": "2026-07-06T22:42:15Z"
+      "updated_at_utc": "2026-07-07T11:42:13Z"
     },
     "SOLUSD": {
       "asset_symbol": "SOLUSD",
-      "captured_at_utc": "2026-07-06T22:42:39Z",
-      "deltaVs1": -2.17,
-      "updated_at_utc": "2026-07-06T22:42:39Z"
+      "captured_at_utc": "2026-07-07T11:42:36Z",
+      "deltaVs1": -2.2,
+      "updated_at_utc": "2026-07-07T11:42:36Z"
     },
     "TSLA": {
       "asset_symbol": "TSLA",
-      "captured_at_utc": "2026-07-06T22:42:51Z",
+      "captured_at_utc": "2026-07-07T11:42:48Z",
       "deltaVs1": 0.33,
-      "updated_at_utc": "2026-07-06T22:42:51Z"
+      "updated_at_utc": "2026-07-07T11:42:48Z"
     },
     "TSM": {
       "asset_symbol": "TSM",
-      "captured_at_utc": "2026-07-06T22:43:04Z",
+      "captured_at_utc": "2026-07-07T11:43:01Z",
       "deltaVs1": -0.1753,
-      "updated_at_utc": "2026-07-06T22:43:04Z"
+      "updated_at_utc": "2026-07-07T11:43:01Z"
     },
     "USOIL": {
       "asset_symbol": "USOIL",
-      "captured_at_utc": "2026-07-06T22:41:51Z",
-      "deltaVs1": -1.54,
-      "updated_at_utc": "2026-07-06T22:41:51Z"
+      "captured_at_utc": "2026-07-07T11:41:49Z",
+      "deltaVs1": -1.5,
+      "updated_at_utc": "2026-07-07T11:41:49Z"
     }
   },
-  "last_run_time_utc": "2026-07-06T22:43:04Z"
+  "last_run_time_utc": "2026-07-07T11:43:01Z"
 }
