@@ -186,13 +186,14 @@
               <th>DCAS</th>
               <th>Line</th>
               <th>Color</th>
+              <th>Close</th>
               <th>Score</th>
               <th>Raw Allocation</th>
               <th>Final Allocation</th>
               <th>Rounded Up</th>
             </tr>
           </thead>
-          <tbody id="rows"><tr><td class="empty" colspan="8">No allocations loaded yet.</td></tr></tbody>
+          <tbody id="rows"><tr><td class="empty" colspan="9">No allocations loaded yet.</td></tr></tbody>
         </table>
       </div>
 
@@ -301,12 +302,14 @@
       if (!asset || !Number.isFinite(dcasValue)) return null;
       const lineSide = String(pick(row, ["lineSide", "dcas_side", "line_side"]) || (dcasValue < 0 ? "below" : dcasValue > 0 ? "above" : "on")).toLowerCase();
       const visualColor = String(pick(row, ["visualColor", "dcas_visual_color", "color"]) || "unknown").toLowerCase();
+      const closePrice = Number(pick(row, ["lastDecodedDailyCandleClosePrice", "last_decoded_daily_candle_close_price"]));
 
       return {
         asset: String(asset).trim().toUpperCase(),
         dcasValue,
         lineSide,
         visualColor,
+        closePrice: Number.isFinite(closePrice) ? closePrice : null,
         score: dcasValue < 0 ? Math.abs(dcasValue) : 0,
         updatedAt: pick(row, ["updated_at_utc", "updatedAt", "updated_at"]),
         capturedAt: pick(row, ["captured_at_utc", "capturedAt", "captured_at"])
@@ -386,6 +389,7 @@
         <td>${num(row.dcasValue)}</td>
         <td>${escapeHtml(row.lineSide)}</td>
         <td class="${row.visualColor === "green" ? "green" : row.visualColor === "red" ? "red" : ""}">${escapeHtml(row.visualColor)}</td>
+        <td>${row.closePrice === null ? "" : num(row.closePrice)}</td>
         <td>${num(row.score)}</td>
         <td>${money(row.rawAllocation)}</td>
         <td>${money(row.finalAllocation)}</td>
@@ -407,7 +411,7 @@
     }
 
     function empty(message) {
-      return `<tr><td class="empty" colspan="8">${message}</td></tr>`;
+      return `<tr><td class="empty" colspan="9">${message}</td></tr>`;
     }
 
     function sum(rows, key) {
