@@ -74,6 +74,24 @@
       padding: 8px 10px;
     }
 
+    label.toggle {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 10px;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 8px 10px;
+      background: #fff;
+      color: var(--text);
+    }
+
+    label.toggle input {
+      width: auto;
+      min-height: 18px;
+      margin: 0;
+    }
+
     button {
       border: 0;
       padding: 9px 14px;
@@ -209,6 +227,9 @@
         <label>Min allocation <input id="minimum" type="number" min="0" step="0.01" value="5"></label>
         <label>Round-up tolerance <input id="tolerance" type="number" min="0" step="0.01" value="0.50"></label>
         <label>Excludes <input id="excludes" type="text" value="OIL, PLTR, MSTR, BTCUSD, USOIL" spellcheck="false"></label>
+        <label>Positive DCAS max <input id="positiveThreshold" type="number" min="0" step="0.01" value="0"></label>
+        <label class="toggle">Show red <input id="showRed" type="checkbox"></label>
+        <label class="toggle">Show &gt; 0 <input id="showPositive" type="checkbox"></label>
         <button type="submit">Refresh / Recalculate</button>
       </form>
     </section>
@@ -221,6 +242,9 @@
       minimum: $("minimum"),
       tolerance: $("tolerance"),
       excludes: $("excludes"),
+      positiveThreshold: $("positiveThreshold"),
+      showRed: $("showRed"),
+      showPositive: $("showPositive"),
       status: $("status"),
       rows: $("rows"),
       budgetOut: $("budgetOut"),
@@ -261,8 +285,10 @@
         els.droppedOut.textContent = String(result.dropped.length + result.overflow.length);
         els.rows.innerHTML = result.kept.length ? result.kept.map(rowHtml).join("") : empty("No assets met the allocation rules.");
 
-        const excluded = options.excludes.size ? ` Excluded: ${[...options.excludes].join(", ")}.` : "";
-        setStatus(`Showing ${result.kept.length} ${generated.session} trade candidates for ${generated.date} from ${rows.length} valid asset rows.${excluded}`);
+        const excluded = options.excludes.size ? ` Manual excludes: ${[...options.excludes].join(", ")}.` : "";
+        const redMode = options.showRed ? "Red rows are shown" : "Red rows are hidden";
+        const positiveMode = options.showPositive ? `positive rows up to ${num(options.positiveThreshold)} are shown` : "positive rows are hidden";
+        setStatus(`Showing ${result.kept.length} ${generated.session} trade candidates for ${generated.date} from ${rows.length} valid asset rows. ${redMode}; ${positiveMode}.${excluded}`);
       } catch (error) {
         reset();
         setStatus(`Error: ${error.message}`, true);
@@ -274,6 +300,9 @@
         budget: readNumber(els.budget.value, "Daily budget"),
         minimum: readNumber(els.minimum.value, "Min allocation"),
         tolerance: readNumber(els.tolerance.value, "Round-up tolerance"),
+        positiveThreshold: readNumber(els.positiveThreshold.value, "Positive DCAS max"),
+        showRed: els.showRed.checked,
+        showPositive: els.showPositive.checked,
         excludes: new Set(els.excludes.value.split(",").map((item) => item.trim().toUpperCase()).filter(Boolean))
       };
     }
@@ -325,7 +354,9 @@
 
     function allocate(rows, options) {
       const candidates = rows
-        .filter((row) => row.score > 0 && !options.excludes.has(row.asset))
+        .filter((row) => isEligible(row, options))
+        .map((row) => ({ ...row, score: scoreFor(row, options) }))
+        .filter((row) => row.score > 0)
         .sort((a, b) => b.score - a.score || a.asset.localeCompare(b.asset));
       const top = candidates.slice(0, 5);
       const overflow = candidates.slice(5);
@@ -361,6 +392,19 @@
 
       kept.sort((a, b) => b.finalAllocation - a.finalAllocation || a.asset.localeCompare(b.asset));
       return { kept, dropped, overflow, allocated: sum(kept, "finalAllocation") };
+    }
+
+    function isEligible(row, options) {
+      if (options.excludes.has(row.asset)) return false;
+      if (!options.showRed && row.visualColor === "red") return false;
+      if (row.dcasValue < 0) return true;
+      return options.showPositive && row.dcasValue > 0 && row.dcasValue < options.positiveThreshold;
+    }
+
+    function scoreFor(row, options) {
+      if (row.dcasValue < 0) return Math.abs(row.dcasValue);
+      if (row.dcasValue > 0) return Math.max(0, options.positiveThreshold - row.dcasValue);
+      return 0;
     }
 
     function generatedInfo(data, rows) {
