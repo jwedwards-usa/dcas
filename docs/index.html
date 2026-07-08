@@ -212,9 +212,8 @@
         <label>Min allocation <input id="minimum" type="number" min="0" step="0.01" value="5"></label>
         <label>Round-up tolerance <input id="tolerance" type="number" min="0" step="0.01" value="0.50"></label>
         <label>Excludes <input id="excludes" type="text" value="OIL, PLTR, MSTR, BTCUSD, USOIL" spellcheck="false"></label>
-        <label>Positive DCAS max <input id="positiveThreshold" type="number" min="0" step="0.01" value="0"></label>
+        <label>DCAS max <input id="positiveThreshold" type="number" min="0" step="0.01" value="0"></label>
         <label class="toggle">Show red <input id="showRed" type="checkbox"></label>
-        <label class="toggle">Show &gt; 0 <input id="showPositive" type="checkbox"></label>
       </div>
     </section>
   </main>
@@ -228,7 +227,6 @@
       excludes: $("excludes"),
       positiveThreshold: $("positiveThreshold"),
       showRed: $("showRed"),
-      showPositive: $("showPositive"),
       status: $("status"),
       rows: $("rows"),
       budgetOut: $("budgetOut"),
@@ -272,12 +270,7 @@
 
         const excluded = options.excludes.size ? ` Manual excludes: ${[...options.excludes].join(", ")}.` : "";
         const redMode = options.showRed ? "Red rows are shown" : "Red rows are hidden";
-        const positiveMode = options.showPositive
-          ? options.positiveThreshold > 0
-            ? `positive rows up to ${num(options.positiveThreshold)} are shown`
-            : "all positive rows are shown"
-          : "positive rows are hidden";
-        setStatus(`Showing ${result.visible.length} ${generated.session} trade candidates for ${generated.date} from ${rows.length} valid asset rows. ${redMode}; ${positiveMode}.${excluded}`);
+        setStatus(`Showing ${result.visible.length} ${generated.session} trade candidates for ${generated.date} from ${rows.length} valid asset rows. ${redMode}; DCAS max is ${num(options.dcasMax)}.${excluded}`);
       } catch (error) {
         reset();
         setStatus(`Error: ${error.message}`, true);
@@ -289,9 +282,8 @@
         budget: readNumber(els.budget.value, "Daily budget"),
         minimum: readNumber(els.minimum.value, "Min allocation"),
         tolerance: readNumber(els.tolerance.value, "Round-up tolerance"),
-        positiveThreshold: readNumber(els.positiveThreshold.value, "Positive DCAS max"),
+        dcasMax: readNumber(els.positiveThreshold.value, "DCAS max"),
         showRed: els.showRed.checked,
-        showPositive: els.showPositive.checked,
         excludes: new Set(els.excludes.value.split(",").map((item) => item.trim().toUpperCase()).filter(Boolean))
       };
     }
@@ -396,17 +388,11 @@
     function isEligible(row, options) {
       if (options.excludes.has(row.asset)) return false;
       if (!options.showRed && row.visualColor === "red") return false;
-      if (row.dcasValue < 0) return true;
-      return options.showPositive
-        && row.dcasValue > 0
-        && (options.positiveThreshold === 0 || row.dcasValue < options.positiveThreshold);
+      return row.dcasValue <= options.dcasMax;
     }
 
     function scoreFor(row, options) {
-      if (row.dcasValue < 0) return Math.abs(row.dcasValue);
-      if (row.dcasValue > 0 && options.positiveThreshold === 0) return 1 / (1 + row.dcasValue);
-      if (row.dcasValue > 0) return Math.max(0, options.positiveThreshold - row.dcasValue);
-      return 0;
+      return Math.max(0, options.dcasMax - row.dcasValue);
     }
 
     function generatedInfo(data, rows) {
