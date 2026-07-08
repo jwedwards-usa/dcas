@@ -46,9 +46,9 @@
       border-radius: 8px;
     }
 
-    form {
+    .controls {
       display: grid;
-      grid-template-columns: repeat(4, minmax(130px, 1fr)) auto;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       gap: 12px;
       align-items: end;
       margin-top: 16px;
@@ -62,13 +62,10 @@
       font-weight: 650;
     }
 
-    input, button {
+    input {
       min-height: 42px;
       border-radius: 7px;
       font: inherit;
-    }
-
-    input {
       width: 100%;
       border: 1px solid var(--line);
       padding: 8px 10px;
@@ -90,15 +87,6 @@
       width: auto;
       min-height: 18px;
       margin: 0;
-    }
-
-    button {
-      border: 0;
-      padding: 9px 14px;
-      background: var(--blue);
-      color: #fff;
-      cursor: pointer;
-      font-weight: 750;
     }
 
     .status {
@@ -179,12 +167,11 @@
 
     @media (max-width: 820px) {
       main { width: min(100% - 24px, 1080px); padding: 20px 0; }
-      form, .summary { grid-template-columns: 1fr 1fr; }
-      button { grid-column: 1 / -1; }
+      .controls, .summary { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 540px) {
-      form, .summary { grid-template-columns: 1fr; }
+      .controls, .summary { grid-template-columns: 1fr; }
       .card { padding: 14px; }
     }
   </style>
@@ -222,7 +209,7 @@
         <div class="metric"><span>Dropped</span><strong id="droppedOut">0</strong></div>
       </div>
 
-      <form id="controls">
+      <div id="controls" class="controls">
         <label>Daily budget <input id="budget" type="number" min="0" step="0.01" value="100"></label>
         <label>Min allocation <input id="minimum" type="number" min="0" step="0.01" value="5"></label>
         <label>Round-up tolerance <input id="tolerance" type="number" min="0" step="0.01" value="0.50"></label>
@@ -230,8 +217,7 @@
         <label>Positive DCAS max <input id="positiveThreshold" type="number" min="0" step="0.01" value="0"></label>
         <label class="toggle">Show red <input id="showRed" type="checkbox"></label>
         <label class="toggle">Show &gt; 0 <input id="showPositive" type="checkbox"></label>
-        <button type="submit">Refresh / Recalculate</button>
-      </form>
+      </div>
     </section>
   </main>
 
@@ -252,10 +238,10 @@
       keptOut: $("keptOut"),
       droppedOut: $("droppedOut")
     };
+    let latestData = null;
 
-    $("controls").addEventListener("submit", (event) => {
-      event.preventDefault();
-      load();
+    $("controls").addEventListener("input", () => {
+      if (latestData) render(latestData);
     });
 
     load();
@@ -265,7 +251,8 @@
         setStatus("Loading latest-dcas.json...");
         const response = await fetch("./latest-dcas.json?ts=" + Date.now());
         if (!response.ok) throw new Error(`Could not load latest-dcas.json (${response.status})`);
-        render(await response.json());
+        latestData = await response.json();
+        render(latestData);
       } catch (error) {
         reset();
         setStatus(`Error: ${error.message}`, true);
@@ -283,12 +270,16 @@
         els.allocatedOut.textContent = money(result.allocated);
         els.keptOut.textContent = String(result.kept.length);
         els.droppedOut.textContent = String(result.dropped.length + result.overflow.length);
-        els.rows.innerHTML = result.kept.length ? result.kept.map(rowHtml).join("") : empty("No assets met the allocation rules.");
+        els.rows.innerHTML = result.visible.length ? result.visible.map(rowHtml).join("") : empty("No assets met the allocation rules.");
 
         const excluded = options.excludes.size ? ` Manual excludes: ${[...options.excludes].join(", ")}.` : "";
         const redMode = options.showRed ? "Red rows are shown" : "Red rows are hidden";
-        const positiveMode = options.showPositive ? `positive rows up to ${num(options.positiveThreshold)} are shown` : "positive rows are hidden";
-        setStatus(`Showing ${result.kept.length} ${generated.session} trade candidates for ${generated.date} from ${rows.length} valid asset rows. ${redMode}; ${positiveMode}.${excluded}`);
+        const positiveMode = options.showPositive
+          ? options.positiveThreshold > 0
+            ? `positive rows up to ${num(options.positiveThreshold)} are shown`
+            : "all positive rows are shown"
+          : "positive rows are hidden";
+        setStatus(`Showing ${result.visible.length} ${generated.session} trade candidates for ${generated.date} from ${rows.length} valid asset rows. ${redMode}; ${positiveMode}.${excluded}`);
       } catch (error) {
         reset();
         setStatus(`Error: ${error.message}`, true);
@@ -359,7 +350,12 @@
         .filter((row) => row.score > 0)
         .sort((a, b) => b.score - a.score || a.asset.localeCompare(b.asset));
       const top = candidates.slice(0, 5);
-      const overflow = candidates.slice(5);
+      const overflow = candidates.slice(5).map((row) => ({
+        ...row,
+        rawAllocation: 0,
+        finalAllocation: 0,
+        roundedUp: false
+      }));
       const scoreTotal = sum(top, "score");
       const all = top.map((row) => ({
         ...row,
@@ -391,18 +387,22 @@
       }
 
       kept.sort((a, b) => b.finalAllocation - a.finalAllocation || a.asset.localeCompare(b.asset));
-      return { kept, dropped, overflow, allocated: sum(kept, "finalAllocation") };
+      const visible = [...kept, ...dropped, ...overflow].sort((a, b) => b.score - a.score || a.asset.localeCompare(b.asset));
+      return { kept, dropped, overflow, visible, allocated: sum(kept, "finalAllocation") };
     }
 
     function isEligible(row, options) {
       if (options.excludes.has(row.asset)) return false;
       if (!options.showRed && row.visualColor === "red") return false;
       if (row.dcasValue < 0) return true;
-      return options.showPositive && row.dcasValue > 0 && row.dcasValue < options.positiveThreshold;
+      return options.showPositive
+        && row.dcasValue > 0
+        && (options.positiveThreshold === 0 || row.dcasValue < options.positiveThreshold);
     }
 
     function scoreFor(row, options) {
       if (row.dcasValue < 0) return Math.abs(row.dcasValue);
+      if (row.dcasValue > 0 && options.positiveThreshold === 0) return 1 / (1 + row.dcasValue);
       if (row.dcasValue > 0) return Math.max(0, options.positiveThreshold - row.dcasValue);
       return 0;
     }
