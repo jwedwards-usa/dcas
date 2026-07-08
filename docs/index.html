@@ -160,7 +160,6 @@
     }
 
     .asset { font-weight: 800; }
-    .yes { color: var(--green); font-weight: 750; }
     .green { color: var(--green); font-weight: 750; }
     .red { color: var(--red); font-weight: 750; }
     .empty { padding: 24px; text-align: center; color: var(--muted); }
@@ -195,10 +194,9 @@
               <th>Score</th>
               <th>Raw Allocation</th>
               <th>Final Allocation</th>
-              <th>Rounded Up</th>
             </tr>
           </thead>
-          <tbody id="rows"><tr><td class="empty" colspan="9">No allocations loaded yet.</td></tr></tbody>
+          <tbody id="rows"><tr><td class="empty" colspan="8">No allocations loaded yet.</td></tr></tbody>
         </table>
       </div>
 
@@ -348,7 +346,7 @@
         .filter((row) => isEligible(row, options))
         .map((row) => ({ ...row, score: scoreFor(row, options) }))
         .filter((row) => row.score > 0)
-        .sort((a, b) => b.score - a.score || a.asset.localeCompare(b.asset));
+        .sort(byDcasThenAsset);
       const top = candidates.slice(0, 5);
       const overflow = candidates.slice(5).map((row) => ({
         ...row,
@@ -386,9 +384,13 @@
         row.finalAllocation = regularScore ? remaining * row.score / regularScore : 0;
       }
 
-      kept.sort((a, b) => b.finalAllocation - a.finalAllocation || a.asset.localeCompare(b.asset));
-      const visible = [...kept, ...dropped, ...overflow].sort((a, b) => b.score - a.score || a.asset.localeCompare(b.asset));
+      kept.sort(byDcasThenAsset);
+      const visible = [...kept, ...dropped, ...overflow].sort(byDcasThenAsset);
       return { kept, dropped, overflow, visible, allocated: sum(kept, "finalAllocation") };
+    }
+
+    function byDcasThenAsset(a, b) {
+      return a.dcasValue - b.dcasValue || a.asset.localeCompare(b.asset);
     }
 
     function isEligible(row, options) {
@@ -437,7 +439,6 @@
         <td>${num(row.score)}</td>
         <td>${money(row.rawAllocation)}</td>
         <td>${money(row.finalAllocation)}</td>
-        <td class="${row.roundedUp ? "yes" : ""}">${row.roundedUp ? "Yes" : "No"}</td>
       </tr>`;
     }
 
@@ -455,7 +456,7 @@
     }
 
     function empty(message) {
-      return `<tr><td class="empty" colspan="9">${message}</td></tr>`;
+      return `<tr><td class="empty" colspan="8">${message}</td></tr>`;
     }
 
     function sum(rows, key) {
