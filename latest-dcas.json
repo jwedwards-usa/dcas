@@ -223,16 +223,16 @@
     },
     "SOLUSD": {
       "asset_symbol": "SOLUSD",
-      "captured_at_utc": "2026-08-24T13:14:07Z",
-      "dcasStatus": "unavailable",
-      "dcasValue": null,
-      "lastDecodedDailyCandleClosePrice": 96.49,
+      "captured_at_utc": "2026-08-24T15:08:11Z",
+      "dcasStatus": "current",
+      "dcasValue": -0.9874,
+      "lastDecodedDailyCandleClosePrice": 96.39,
       "lastDecodedDailyCandleCloseSource": "position_sidecar_1d_close",
       "lastDecodedDailyCandleCloseTimeUtc": "2026-08-24T00:00:00Z",
-      "lineSide": "unavailable",
-      "updated_at_utc": "2026-08-24T13:14:07Z",
-      "visualColor": null,
-      "visualColorSource": "unavailable"
+      "lineSide": "below",
+      "updated_at_utc": "2026-08-24T15:08:11Z",
+      "visualColor": "red",
+      "visualColorSource": "websocket_plot_2_4"
     },
     "TSLA": {
       "asset_symbol": "TSLA",
@@ -274,5 +274,5 @@
       "visualColorSource": "websocket_plot_2_4"
     }
   },
-  "last_run_time_utc": "2026-08-24T13:14:55Z"
+  "last_run_time_utc": "2026-08-24T15:08:11Z"
 }
