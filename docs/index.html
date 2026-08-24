@@ -308,7 +308,8 @@
       if (!row || typeof row !== "object") return null;
 
       const asset = pick(row, ["asset", "ticker", "symbol", "asset_symbol"]) || key;
-      const dcasValue = Number(pick(row, ["dcasValue", "dcas_value", "value"]));
+      const rawDcasValue = pick(row, ["dcasValue", "dcas_value", "value"]);
+      const dcasValue = rawDcasValue === null ? NaN : Number(rawDcasValue);
       if (!asset || !Number.isFinite(dcasValue)) return null;
       const lineSide = String(pick(row, ["lineSide", "dcas_side", "line_side"]) || (dcasValue < 0 ? "below" : dcasValue > 0 ? "above" : "on")).toLowerCase();
       const visualColor = String(pick(row, ["visualColor", "dcas_visual_color", "color"]) || "unknown").toLowerCase();

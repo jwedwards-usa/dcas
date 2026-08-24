@@ -11,7 +11,9 @@ below the visible zero line and excludes visually red rows. The viewer also has
 manual controls for showing red rows and raising the DCAS max above `0` when low
 positive readings should be included.
 Each row also includes `lastDecodedDailyCandleClosePrice` from the latest decoded
-TradingView daily candle in the position-view sidecar.
+TradingView daily candle in the position-view sidecar. If DCAS is unavailable,
+the export refreshes the close, sets `dcasValue` to `null` and `dcasStatus` to
+`unavailable`, and the viewer excludes the row from allocation.
 
 Live page: https://jwedwards-usa.github.io/dcas/
 
