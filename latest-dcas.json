@@ -197,14 +197,14 @@
     },
     "PLTR": {
       "asset_symbol": "PLTR",
-      "captured_at_utc": "2026-10-27T18:02:03Z",
+      "captured_at_utc": "2026-10-27T19:22:05Z",
       "dcasStatus": "current",
-      "dcasValue": 1.1586,
-      "lastDecodedDailyCandleClosePrice": 199.63,
+      "dcasValue": 1.1755,
+      "lastDecodedDailyCandleClosePrice": 200.56,
       "lastDecodedDailyCandleCloseSource": "position_sidecar_1d_close",
       "lastDecodedDailyCandleCloseTimeUtc": "2026-10-27T13:30:00Z",
       "lineSide": "above",
-      "updated_at_utc": "2026-10-27T18:02:04Z",
+      "updated_at_utc": "2026-10-27T19:22:05Z",
       "visualColor": "green",
       "visualColorSource": "websocket_plot_2_4"
     },
@@ -300,5 +300,5 @@
       "visualColorSource": "websocket_plot_2_4"
     }
   },
-  "last_run_time_utc": "2026-10-27T18:02:04Z"
+  "last_run_time_utc": "2026-10-27T19:22:05Z"
 }
