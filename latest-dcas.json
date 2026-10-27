@@ -132,14 +132,14 @@
     },
     "ISRG": {
       "asset_symbol": "ISRG",
-      "captured_at_utc": "2026-10-26T13:15:45Z",
+      "captured_at_utc": "2026-10-27T12:42:09Z",
       "dcasStatus": "current",
-      "dcasValue": -0.7994,
-      "lastDecodedDailyCandleClosePrice": 452.29,
+      "dcasValue": -0.8095,
+      "lastDecodedDailyCandleClosePrice": 451.63,
       "lastDecodedDailyCandleCloseSource": "position_sidecar_1d_close",
-      "lastDecodedDailyCandleCloseTimeUtc": "2026-10-23T13:30:00Z",
+      "lastDecodedDailyCandleCloseTimeUtc": "2026-10-26T13:30:00Z",
       "lineSide": "below",
-      "updated_at_utc": "2026-10-26T13:15:45Z",
+      "updated_at_utc": "2026-10-27T12:42:10Z",
       "visualColor": "green",
       "visualColorSource": "websocket_plot_2_4"
     },
@@ -300,5 +300,5 @@
       "visualColorSource": "websocket_plot_2_4"
     }
   },
-  "last_run_time_utc": "2026-10-27T12:41:32Z"
+  "last_run_time_utc": "2026-10-27T12:42:10Z"
 }
