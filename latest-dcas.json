@@ -184,27 +184,27 @@
     },
     "NVDA": {
       "asset_symbol": "NVDA",
-      "captured_at_utc": "2026-10-27T12:38:18Z",
+      "captured_at_utc": "2026-10-27T18:01:32Z",
       "dcasStatus": "current",
-      "dcasValue": 0.1706,
-      "lastDecodedDailyCandleClosePrice": 216.0,
+      "dcasValue": 0.2241,
+      "lastDecodedDailyCandleClosePrice": 217.74,
       "lastDecodedDailyCandleCloseSource": "position_sidecar_1d_close",
-      "lastDecodedDailyCandleCloseTimeUtc": "2026-10-26T13:30:00Z",
+      "lastDecodedDailyCandleCloseTimeUtc": "2026-10-27T13:30:00Z",
       "lineSide": "above",
-      "updated_at_utc": "2026-10-27T12:38:18Z",
+      "updated_at_utc": "2026-10-27T18:01:32Z",
       "visualColor": "green",
       "visualColorSource": "websocket_plot_2_4"
     },
     "PLTR": {
       "asset_symbol": "PLTR",
-      "captured_at_utc": "2026-10-27T12:38:43Z",
+      "captured_at_utc": "2026-10-27T18:02:03Z",
       "dcasStatus": "current",
-      "dcasValue": 1.1462,
-      "lastDecodedDailyCandleClosePrice": 198.84,
+      "dcasValue": 1.1586,
+      "lastDecodedDailyCandleClosePrice": 199.63,
       "lastDecodedDailyCandleCloseSource": "position_sidecar_1d_close",
-      "lastDecodedDailyCandleCloseTimeUtc": "2026-10-26T13:30:00Z",
+      "lastDecodedDailyCandleCloseTimeUtc": "2026-10-27T13:30:00Z",
       "lineSide": "above",
-      "updated_at_utc": "2026-10-27T12:38:43Z",
+      "updated_at_utc": "2026-10-27T18:02:04Z",
       "visualColor": "green",
       "visualColorSource": "websocket_plot_2_4"
     },
@@ -300,5 +300,5 @@
       "visualColorSource": "websocket_plot_2_4"
     }
   },
-  "last_run_time_utc": "2026-10-27T12:42:10Z"
+  "last_run_time_utc": "2026-10-27T18:02:04Z"
 }
