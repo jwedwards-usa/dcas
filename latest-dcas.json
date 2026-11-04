@@ -260,6 +260,32 @@
       "visualColor": null,
       "visualColorSource": "unavailable"
     },
+    "SQQQ": {
+      "asset_symbol": "SQQQ",
+      "captured_at_utc": "2026-11-04T22:25:54Z",
+      "dcasStatus": "current",
+      "dcasValue": -0.4736,
+      "lastDecodedDailyCandleClosePrice": 41.56,
+      "lastDecodedDailyCandleCloseSource": "position_sidecar_1d_close",
+      "lastDecodedDailyCandleCloseTimeUtc": "2026-11-04T14:30:00Z",
+      "lineSide": "below",
+      "updated_at_utc": "2026-11-04T22:25:54Z",
+      "visualColor": "green",
+      "visualColorSource": "websocket_plot_2_4"
+    },
+    "TQQQ": {
+      "asset_symbol": "TQQQ",
+      "captured_at_utc": "2026-11-04T22:25:05Z",
+      "dcasStatus": "current",
+      "dcasValue": 0.1124,
+      "lastDecodedDailyCandleClosePrice": 62.24,
+      "lastDecodedDailyCandleCloseSource": "position_sidecar_1d_close",
+      "lastDecodedDailyCandleCloseTimeUtc": "2026-11-04T14:30:00Z",
+      "lineSide": "above",
+      "updated_at_utc": "2026-11-04T22:25:05Z",
+      "visualColor": "red",
+      "visualColorSource": "websocket_plot_2_4"
+    },
     "TSLA": {
       "asset_symbol": "TSLA",
       "captured_at_utc": "2026-11-04T13:43:26Z",
@@ -313,5 +339,5 @@
       "visualColorSource": "websocket_plot_2_4"
     }
   },
-  "last_run_time_utc": "2026-11-04T13:44:42Z"
+  "last_run_time_utc": "2026-11-04T22:25:54Z"
 }
