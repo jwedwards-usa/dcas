@@ -106,14 +106,14 @@
     },
     "BTCUSD": {
       "asset_symbol": "BTCUSD",
-      "captured_at_utc": "2026-11-06T23:41:25Z",
+      "captured_at_utc": "2026-11-07T18:19:55Z",
       "dcasStatus": "current",
-      "dcasValue": -1.1966,
-      "lastDecodedDailyCandleClosePrice": 75874.94,
+      "dcasValue": -1.2004,
+      "lastDecodedDailyCandleClosePrice": 75773.77,
       "lastDecodedDailyCandleCloseSource": "position_sidecar_1d_close",
-      "lastDecodedDailyCandleCloseTimeUtc": "2026-11-06T00:00:00Z",
+      "lastDecodedDailyCandleCloseTimeUtc": "2026-11-07T00:00:00Z",
       "lineSide": "below",
-      "updated_at_utc": "2026-11-06T23:41:25Z",
+      "updated_at_utc": "2026-11-07T18:19:55Z",
       "visualColor": "green",
       "visualColorSource": "websocket_plot_2_4"
     },
@@ -352,5 +352,5 @@
       "visualColorSource": "websocket_plot_2_4"
     }
   },
-  "last_run_time_utc": "2026-11-06T23:44:17Z"
+  "last_run_time_utc": "2026-11-07T18:19:55Z"
 }
