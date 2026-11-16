@@ -106,14 +106,14 @@
     },
     "BTCUSD": {
       "asset_symbol": "BTCUSD",
-      "captured_at_utc": "2026-11-16T01:54:43Z",
+      "captured_at_utc": "2026-11-16T03:03:58Z",
       "dcasStatus": "current",
-      "dcasValue": -1.7356,
-      "lastDecodedDailyCandleClosePrice": 64746.21,
+      "dcasValue": -1.7149,
+      "lastDecodedDailyCandleClosePrice": 65151.88,
       "lastDecodedDailyCandleCloseSource": "position_sidecar_1d_close",
       "lastDecodedDailyCandleCloseTimeUtc": "2026-11-16T00:00:00Z",
       "lineSide": "below",
-      "updated_at_utc": "2026-11-16T01:54:43Z",
+      "updated_at_utc": "2026-11-16T03:03:58Z",
       "visualColor": "red",
       "visualColorSource": "websocket_plot_2_4"
     },
@@ -249,14 +249,14 @@
     },
     "SOLUSD": {
       "asset_symbol": "SOLUSD",
-      "captured_at_utc": "2026-11-16T01:57:02Z",
+      "captured_at_utc": "2026-11-16T03:04:12Z",
       "dcasStatus": "current",
-      "dcasValue": -1.5635,
-      "lastDecodedDailyCandleClosePrice": 71.28,
+      "dcasValue": -1.5439,
+      "lastDecodedDailyCandleClosePrice": 72.17,
       "lastDecodedDailyCandleCloseSource": "position_sidecar_1d_close",
       "lastDecodedDailyCandleCloseTimeUtc": "2026-11-16T00:00:00Z",
       "lineSide": "below",
-      "updated_at_utc": "2026-11-16T01:57:02Z",
+      "updated_at_utc": "2026-11-16T03:04:13Z",
       "visualColor": "red",
       "visualColorSource": "websocket_plot_2_4"
     },
@@ -352,5 +352,5 @@
       "visualColorSource": "websocket_plot_2_4"
     }
   },
-  "last_run_time_utc": "2026-11-16T01:58:56Z"
+  "last_run_time_utc": "2026-11-16T03:04:13Z"
 }
